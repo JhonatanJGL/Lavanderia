@@ -1,4 +1,4 @@
-package com.example.lavanderia.conexion;
+package com.example.lavanderia.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
