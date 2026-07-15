@@ -1,0 +1,144 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #e8f5e9, #eceff1);
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Textos ---------- */
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;
+}
+
+.subtitle-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #607d8b;
+}
+
+.header-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.error-label {
+    -fx-text-fill: #c62828;
+    -fx-font-weight: bold;
+}
+
+.success-label {
+    -fx-text-fill: #2e7d32;
+    -fx-font-weight: bold;
+}
+
+.total-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;
+}
+
+/* ---------- Contenedores ---------- */
+.header-bar {
+    -fx-background-color: linear-gradient(to right, #1b5e20, #2e7d32);
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 3);
+}
+
+.form-panel {
+    -fx-background-color: white;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ---------- Campos ---------- */
+.text-field, .combo-box, .date-picker {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #b0bec5;
+    -fx-padding: 6;
+}
+
+.text-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #2e7d32;
+}
+
+/* ---------- Botones ---------- */
+.button {
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.btn-primary {
+    -fx-background-color: #2e7d32;
+    -fx-text-fill: white;
+}
+.btn-primary:hover {
+    -fx-background-color: #1b5e20;
+}
+
+.btn-info {
+    -fx-background-color: #1565c0;
+    -fx-text-fill: white;
+}
+.btn-info:hover {
+    -fx-background-color: #0d47a1;
+}
+
+.btn-danger {
+    -fx-background-color: #c62828;
+    -fx-text-fill: white;
+}
+.btn-danger:hover {
+    -fx-background-color: #8e0000;
+}
+
+.btn-secondary {
+    -fx-background-color: #78909c;
+    -fx-text-fill: white;
+}
+.btn-secondary:hover {
+    -fx-background-color: #546e7a;
+}
+
+.btn-outline {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-radius: 6;
+}
+.btn-outline:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+/* ---------- Tabla ---------- */
+.table-view {
+    -fx-background-radius: 8;
+    -fx-background-color: white;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2e7d32;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f1f8f2;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #a5d6a7;
+}

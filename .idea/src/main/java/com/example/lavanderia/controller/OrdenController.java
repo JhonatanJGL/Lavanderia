@@ -214,6 +214,7 @@ public class OrdenController {
         txtCantidad.clear();
         cbEstado.setValue("Pendiente");
         lblTotal.setText("$0.00");
+        lblMensaje.getStyleClass().setAll("error-label");
         lblMensaje.setText("");
         tablaOrdenes.getSelectionModel().clearSelection();
     }
@@ -276,7 +277,7 @@ public class OrdenController {
         }
 
         ordenDAO.insertar(orden);
-        lblMensaje.setStyle("-fx-text-fill: #2e7d32;");
+        lblMensaje.getStyleClass().setAll("success-label");
         lblMensaje.setText("Orden creada correctamente.");
         cargarOrdenes();
         limpiarFormulario();
@@ -285,7 +286,7 @@ public class OrdenController {
     @FXML
     private void onActualizarClick(ActionEvent event) {
         if (ordenSeleccionada == null) {
-            lblMensaje.setStyle("-fx-text-fill: #c62828;");
+            lblMensaje.getStyleClass().setAll("error-label");
             lblMensaje.setText("Selecciona una orden de la tabla para actualizar.");
             return;
         }
@@ -297,7 +298,7 @@ public class OrdenController {
 
         orden.setIdOrden(ordenSeleccionada.getIdOrden());
         ordenDAO.actualizar(orden);
-        lblMensaje.setStyle("-fx-text-fill: #2e7d32;");
+        lblMensaje.getStyleClass().setAll("success-label");
         lblMensaje.setText("Orden actualizada correctamente.");
         cargarOrdenes();
         limpiarFormulario();
@@ -306,13 +307,13 @@ public class OrdenController {
     @FXML
     private void onEliminarClick(ActionEvent event) {
         if (ordenSeleccionada == null) {
-            lblMensaje.setStyle("-fx-text-fill: #c62828;");
+            lblMensaje.getStyleClass().setAll("error-label");
             lblMensaje.setText("Selecciona una orden de la tabla para eliminar.");
             return;
         }
 
         ordenDAO.eliminar(ordenSeleccionada.getIdOrden());
-        lblMensaje.setStyle("-fx-text-fill: #2e7d32;");
+        lblMensaje.getStyleClass().setAll("success-label");
         lblMensaje.setText("Orden eliminada correctamente.");
         cargarOrdenes();
         limpiarFormulario();
