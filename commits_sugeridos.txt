@@ -1,0 +1,11 @@
+1. Estructura inicial del proyecto
+2. Implementar modelos con herencia y encapsulamiento
+3. Implementar interfaz ICRUD y conexion Singleton
+4. Crear base de datos y datos de prueba
+5. Implementar login con tres roles
+6. Implementar dashboard reutilizable por rol
+7. Implementar CRUD de clientes y servicios
+8. Implementar ordenes con control de stock
+9. Agregar reportes, exportacion CSV y comprobantes
+10. Aplicar CSS, logo y validaciones finales
+11. Agregar manual, documentacion y configuracion del ejecutable

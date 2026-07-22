@@ -15,18 +15,18 @@ public final class Conexion {
     private Conexion() {
         this.url = System.getenv().getOrDefault(
                 "DB_URL",
-                "jdbc:mysql://localhost:3307/Poo_lavanderia"
-                        + "?useSSL=false&allowPublicKeyRetrieval=true"
-                        + "&serverTimezone=America/Guayaquil"
+                "jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres"
         );
-        this.usuario = System.getenv().getOrDefault("DB_USER", "root");
-        this.password = System.getenv().getOrDefault("DB_PASSWORD", "1234");
+        this.usuario = System.getenv().getOrDefault(
+                "DB_USER", "postgres.qziiuwdzxftuxgkyywtt");
+        this.password = System.getenv().getOrDefault(
+                "DB_PASSWORD", "Lavander1a23");
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException(
-                    "No se encontró el driver de MySQL. Revise el pom.xml.", e);
+                    "No se encontró el driver de PostgreSQL. Revise el pom.xml.", e);
         }
     }
 

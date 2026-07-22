@@ -33,7 +33,7 @@ public class OrdenLavadoDAO implements ICRUD<OrdenLavado> {
                 """;
         String descontarStock = """
                 UPDATE Servicios SET stock = stock - ?
-                WHERE idServicio = ? AND activo = 1 AND stock >= ?
+                WHERE idServicio = ? AND activo = true AND stock >= ?
                 """;
 
         Connection cn = Conexion.getInstancia().getConnection();
@@ -107,7 +107,7 @@ public class OrdenLavadoDAO implements ICRUD<OrdenLavado> {
                 "UPDATE Servicios SET stock = stock + ? WHERE idServicio = ?";
         String descontarStock = """
                 UPDATE Servicios SET stock = stock - ?
-                WHERE idServicio = ? AND activo = 1 AND stock >= ?
+                WHERE idServicio = ? AND activo = true AND stock >= ?
                 """;
         String actualizarOrden = """
                 UPDATE OrdenesLavado

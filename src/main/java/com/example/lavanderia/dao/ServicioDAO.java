@@ -26,7 +26,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
         String sql = """
                 SELECT idServicio, nombre, precio, stock, descripcion
                 FROM Servicios
-                WHERE activo = 1
+                WHERE activo = true
                 ORDER BY nombre
                 """;
         List<Servicio> servicios = new ArrayList<>();
@@ -43,7 +43,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
         String sql = """
                 SELECT idServicio, nombre, precio, stock, descripcion
                 FROM Servicios
-                WHERE idServicio = ? AND activo = 1
+                WHERE idServicio = ? AND activo = true
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -59,7 +59,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
         String sql = """
                 UPDATE Servicios
                 SET nombre = ?, precio = ?, stock = ?, descripcion = ?
-                WHERE idServicio = ? AND activo = 1
+                WHERE idServicio = ? AND activo = true
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
     public boolean eliminar(int id) throws SQLException {
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(
-                "UPDATE Servicios SET activo = 0 WHERE idServicio = ?")) {
+                "UPDATE Servicios SET activo = false WHERE idServicio = ?")) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         }
@@ -81,7 +81,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
     public boolean existeNombre(String nombre, int idExcluir) throws SQLException {
         String sql = """
                 SELECT COUNT(*) FROM Servicios
-                WHERE activo = 1 AND LOWER(nombre) = LOWER(?) AND idServicio <> ?
+                WHERE activo = true AND LOWER(nombre) = LOWER(?) AND idServicio <> ?
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -96,7 +96,7 @@ public class ServicioDAO implements ICRUD<Servicio> {
     public int contarActivos() throws SQLException {
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(
-                "SELECT COUNT(*) FROM Servicios WHERE activo = 1");
+                "SELECT COUNT(*) FROM Servicios WHERE activo = true");
              ResultSet rs = ps.executeQuery()) {
             return rs.next() ? rs.getInt(1) : 0;
         }

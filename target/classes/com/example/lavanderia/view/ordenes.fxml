@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lavanderia.controller.OrdenController"
+            styleClass="module-root">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <children>
+                <VBox spacing="3">
+                    <children>
+                        <Label text="Órdenes de lavado"
+                               styleClass="page-title"/>
+                        <Label text="Registre transacciones, actualice estados e imprima comprobantes"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar"
+                           promptText="Buscar orden..."
+                           prefWidth="270"
+                           styleClass="search-field"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.36" styleClass="clean-split">
+            <items>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+                            styleClass="transparent-scroll">
+                    <content>
+                        <VBox spacing="10" styleClass="form-card">
+                            <padding>
+                                <Insets top="20" right="20"
+                                        bottom="20" left="20"/>
+                            </padding>
+                            <children>
+                                <Label text="Datos de la orden"
+                                       styleClass="section-title"/>
+                                <Label text="Cliente"
+                                       styleClass="field-label"/>
+                                <ComboBox fx:id="comboCliente"
+                                          promptText="Seleccione un cliente"
+                                          maxWidth="1.7976931348623157E308"/>
+                                <Label text="Servicio"
+                                       styleClass="field-label"/>
+                                <ComboBox fx:id="comboServicio"
+                                          promptText="Seleccione un servicio"
+                                          maxWidth="1.7976931348623157E308"/>
+                                <Label text="Fecha"
+                                       styleClass="field-label"/>
+                                <DatePicker fx:id="fechaOrden"
+                                            maxWidth="1.7976931348623157E308"/>
+                                <Label text="Cantidad"
+                                       styleClass="field-label"/>
+                                <TextField fx:id="txtCantidad"
+                                           promptText="Número de prendas / unidades"/>
+                                <Label text="Estado"
+                                       styleClass="field-label"/>
+                                <ComboBox fx:id="comboEstado"
+                                          maxWidth="1.7976931348623157E308"/>
+                                <Label text="Observaciones"
+                                       styleClass="field-label"/>
+                                <TextArea fx:id="txtObservaciones"
+                                          prefRowCount="3"
+                                          wrapText="true"/>
+
+                                <HBox alignment="CENTER_LEFT" spacing="8"
+                                      styleClass="total-box">
+                                    <children>
+                                        <Label text="Total:"
+                                               styleClass="field-label"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label fx:id="lblTotal"
+                                               text="$ 0.00"
+                                               styleClass="total-value"/>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="8">
+                                    <children>
+                                        <Button fx:id="btnGuardar"
+                                                text="Registrar orden"
+                                                onAction="#guardar"
+                                                styleClass="primary-button"
+                                                HBox.hgrow="ALWAYS"
+                                                maxWidth="1.7976931348623157E308"/>
+                                        <Button text="Limpiar"
+                                                onAction="#limpiar"
+                                                styleClass="secondary-button"/>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="8">
+                                    <children>
+                                        <Button text="Imprimir comprobante"
+                                                onAction="#imprimirComprobante"
+                                                styleClass="success-button"
+                                                HBox.hgrow="ALWAYS"
+                                                maxWidth="1.7976931348623157E308"/>
+                                        <Button text="Eliminar"
+                                                onAction="#eliminar"
+                                                styleClass="danger-button"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <VBox spacing="10" styleClass="table-card">
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+                    <children>
+                        <Label text="Historial de órdenes"
+                               styleClass="section-title"/>
+                        <TableView fx:id="tablaOrdenes"
+                                   VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="#"
+                                             prefWidth="50"/>
+                                <TableColumn fx:id="colCliente"
+                                             text="Cliente"
+                                             prefWidth="145"/>
+                                <TableColumn fx:id="colServicio"
+                                             text="Servicio"
+                                             prefWidth="145"/>
+                                <TableColumn fx:id="colFecha"
+                                             text="Fecha"
+                                             prefWidth="90"/>
+                                <TableColumn fx:id="colCantidad"
+                                             text="Cant."
+                                             prefWidth="65"/>
+                                <TableColumn fx:id="colTotal"
+                                             text="Total"
+                                             prefWidth="80"/>
+                                <TableColumn fx:id="colEstado"
+                                             text="Estado"
+                                             prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

@@ -14,7 +14,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
                        u.usuario, u.password, r.nombreRol
                 FROM Usuarios u
                 INNER JOIN Roles r ON r.idRol = u.idRol
-                WHERE u.usuario = ? AND u.password = ? AND u.activo = 1
+                WHERE u.usuario = ? AND u.password = ? AND u.activo = true
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -47,7 +47,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
                        u.usuario, u.password, r.nombreRol
                 FROM Usuarios u
                 INNER JOIN Roles r ON r.idRol = u.idRol
-                WHERE u.activo = 1
+                WHERE u.activo = true
                 ORDER BY u.nombre
                 """;
         List<Usuario> usuarios = new ArrayList<>();
@@ -66,7 +66,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
                        u.usuario, u.password, r.nombreRol
                 FROM Usuarios u
                 INNER JOIN Roles r ON r.idRol = u.idRol
-                WHERE u.idUsuario = ? AND u.activo = 1
+                WHERE u.idUsuario = ? AND u.activo = true
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -83,7 +83,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
                 UPDATE Usuarios
                 SET nombre = ?, correo = ?, telefono = ?, usuario = ?, password = ?,
                     idRol = (SELECT idRol FROM Roles WHERE nombreRol = ?)
-                WHERE idUsuario = ? AND activo = 1
+                WHERE idUsuario = ? AND activo = true
                 """;
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -96,7 +96,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
     public boolean eliminar(int id) throws SQLException {
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(
-                "UPDATE Usuarios SET activo = 0 WHERE idUsuario = ?")) {
+                "UPDATE Usuarios SET activo = false WHERE idUsuario = ?")) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         }
@@ -107,7 +107,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
         String sql = """
                 SELECT COUNT(*)
                 FROM Usuarios
-                WHERE activo = 1
+                WHERE activo = true
                   AND (LOWER(usuario) = LOWER(?) OR LOWER(correo) = LOWER(?))
                   AND idUsuario <> ?
                 """;
@@ -125,7 +125,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
     public int contarActivos() throws SQLException {
         Connection cn = Conexion.getInstancia().getConnection();
         try (PreparedStatement ps = cn.prepareStatement(
-                "SELECT COUNT(*) FROM Usuarios WHERE activo = 1");
+                "SELECT COUNT(*) FROM Usuarios WHERE activo = true");
              ResultSet rs = ps.executeQuery()) {
             return rs.next() ? rs.getInt(1) : 0;
         }

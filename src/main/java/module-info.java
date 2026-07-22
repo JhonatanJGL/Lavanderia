@@ -2,7 +2,7 @@ module com.example.lavanderia {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires com.mysql.cj;
+    requires org.postgresql.jdbc;
 
     exports com.example.lavanderia.app;
     exports com.example.lavanderia.model;

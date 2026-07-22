@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.lavanderia.controller.ReporteController"
+      spacing="16" styleClass="module-root">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <children>
+                <VBox spacing="3">
+                    <children>
+                        <Label text="Reportes y estadísticas"
+                               styleClass="page-title"/>
+                        <Label text="Módulo de solo lectura para Administrador y Reportes"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Actualizar"
+                        onAction="#actualizar"
+                        styleClass="secondary-button"/>
+                <Button text="Exportar CSV"
+                        onAction="#exportarCSV"
+                        styleClass="primary-button"/>
+            </children>
+        </HBox>
+
+        <HBox spacing="12">
+            <children>
+                <VBox HBox.hgrow="ALWAYS" spacing="6"
+                      styleClass="mini-stat-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="TOTAL ÓRDENES" styleClass="stat-label"/>
+                        <Label fx:id="lblTotalOrdenes" text="0"
+                               styleClass="mini-stat-value"/>
+                    </children>
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" spacing="6"
+                      styleClass="mini-stat-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="INGRESOS" styleClass="stat-label"/>
+                        <Label fx:id="lblIngresos" text="$ 0.00"
+                               styleClass="mini-stat-value"/>
+                    </children>
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" spacing="6"
+                      styleClass="mini-stat-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="PENDIENTES" styleClass="stat-label"/>
+                        <Label fx:id="lblPendientes" text="0"
+                               styleClass="mini-stat-value"/>
+                    </children>
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" spacing="6"
+                      styleClass="mini-stat-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="ENTREGADAS" styleClass="stat-label"/>
+                        <Label fx:id="lblEntregadas" text="0"
+                               styleClass="mini-stat-value"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <SplitPane dividerPositions="0.36"
+                   VBox.vgrow="ALWAYS"
+                   styleClass="clean-split">
+            <items>
+                <VBox spacing="8" styleClass="chart-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="Órdenes por estado"
+                               styleClass="section-title"/>
+                        <PieChart fx:id="graficoEstados"
+                                  legendSide="BOTTOM"
+                                  labelsVisible="true"
+                                  VBox.vgrow="ALWAYS"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8" styleClass="table-card">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="Detalle de transacciones"
+                               styleClass="section-title"/>
+                        <TableView fx:id="tablaReporte"
+                                   VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="#"
+                                             prefWidth="45"/>
+                                <TableColumn fx:id="colCliente"
+                                             text="Cliente"
+                                             prefWidth="130"/>
+                                <TableColumn fx:id="colServicio"
+                                             text="Servicio"
+                                             prefWidth="130"/>
+                                <TableColumn fx:id="colFecha"
+                                             text="Fecha"
+                                             prefWidth="90"/>
+                                <TableColumn fx:id="colTotal"
+                                             text="Total"
+                                             prefWidth="80"/>
+                                <TableColumn fx:id="colEstado"
+                                             text="Estado"
+                                             prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</VBox>

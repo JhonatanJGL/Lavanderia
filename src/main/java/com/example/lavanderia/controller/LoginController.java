@@ -47,7 +47,7 @@ public class LoginController {
             abrirDashboard(autenticado);
         } catch (SQLException e) {
             Alertas.error("Error de conexión",
-                    "No se pudo validar el usuario. Revise MySQL y Conexion.java.\n\n"
+                    "No se pudo validar el usuario. Revise la conexión a la base de datos (Supabase) y Conexion.java.\n\n"
                             + e.getMessage());
         }
     }

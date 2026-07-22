@@ -1,0 +1,32 @@
+GUION DE VIDEO - MÁXIMO 3 MINUTOS
+
+0:00 - 0:15
+Presentar AquaClean y mencionar JavaFX, MySQL y los cuatro pilares POO.
+
+0:15 - 0:45
+Ingresar como ADMIN (admin / 123456).
+Mostrar el dashboard y el módulo Usuarios.
+
+0:45 - 1:20
+Abrir Servicios y enseñar guardar, editar, eliminar y limpiar.
+Mencionar validaciones de precio, stock y duplicados.
+
+1:20 - 1:55
+Registrar un cliente.
+Crear una orden, mostrar cálculo de total, reducción de stock
+e impresión del comprobante.
+
+1:55 - 2:25
+Ingresar como CAJERO (cajero / 123456).
+Mostrar que no tiene acceso a Usuarios, Reportes ni Configuración.
+
+2:25 - 2:45
+Ingresar como REPORTES (reportes / 123456).
+Mostrar gráfico, listado y exportación CSV.
+
+2:45 - 3:00
+Explicar:
+Persona -> Usuario/Cliente,
+mostrarTipo() como polimorfismo,
+atributos privados como encapsulamiento
+e ICRUD como abstracción.

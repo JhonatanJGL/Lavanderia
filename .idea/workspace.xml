@@ -4,66 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5600f4e-4f49-42ab-ba3d-061018007a3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/Pruebaconexion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ClienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ICRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ICRUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/OrdenLavadoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/OrdenLavadoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ServicioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/ServicioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/dao/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/OrdenLavado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/OrdenLavado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Servicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Servicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lavanderia/model/Usuario.java" afterDir="false" />
-    </list>
+    <list default="true" id="e22e0bcd-b2c2-44a0-aaf4-ffe9eb58a05e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;JhonatanJGL&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/JhonatanJGL/Lavanderia.git&quot;,
-    &quot;accountId&quot;: &quot;cf4d7f3f-8d17-41a2-8bb0-adb6ed938878&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6,
-  &quot;fromUser&quot;: false
-}</component>
-  <component name="ProjectId" id="3GWhX7HXRb2w6jdvM6x2V85TikI" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3GqIldzuuuS0cos6GkuuKCYLgSN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.Lavanderia [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Lavanderia [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.PruebaConexion.executor": "Run",
+    "Maven.lavanderia [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nari/Downloads/Lavanderia_Entrega_Final_Supabase_CORREGIDO/Lavanderia_Entrega_Final",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -74,11 +44,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f5600f4e-4f49-42ab-ba3d-061018007a3c" name="Changes" comment="" />
-      <created>1784093270030</created>
+      <changelist id="e22e0bcd-b2c2-44a0-aaf4-ffe9eb58a05e" name="Changes" comment="" />
+      <created>1784692824353</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1784093270030</updated>
+      <updated>1784692824353</updated>
     </task>
     <servers />
   </component>

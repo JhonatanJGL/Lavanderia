@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+    <dontWrapJar>false</dontWrapJar>
+    <headerType>gui</headerType>
+    <jar>target/lavanderia-1.0.0.jar</jar>
+    <outfile>dist/AquaClean.exe</outfile>
+    <errTitle>AquaClean</errTitle>
+    <icon>AquaClean.ico</icon>
+    <chdir>.</chdir>
+    <priority>normal</priority>
+    <downloadUrl>https://adoptium.net/</downloadUrl>
+    <stayAlive>false</stayAlive>
+    <restartOnCrash>false</restartOnCrash>
+    <classPath>
+        <mainClass>com.example.lavanderia.app.Main</mainClass>
+        <cp>lib/*</cp>
+    </classPath>
+    <jre>
+        <path>jre</path>
+        <bundledJre64Bit>true</bundledJre64Bit>
+        <bundledJreAsFallback>true</bundledJreAsFallback>
+        <minVersion>21</minVersion>
+        <jdkPreference>preferJre</jdkPreference>
+        <runtimeBits>64/32</runtimeBits>
+    </jre>
+    <versionInfo>
+        <fileVersion>1.0.0.0</fileVersion>
+        <txtFileVersion>1.0.0</txtFileVersion>
+        <fileDescription>Sistema de Lavandería AquaClean</fileDescription>
+        <productVersion>1.0.0.0</productVersion>
+        <txtProductVersion>1.0.0</txtProductVersion>
+        <productName>AquaClean</productName>
+        <companyName>Escuela Politécnica Nacional</companyName>
+        <internalName>AquaClean</internalName>
+        <originalFilename>AquaClean.exe</originalFilename>
+        <language>SPANISH</language>
+    </versionInfo>
+</launch4jConfig>
