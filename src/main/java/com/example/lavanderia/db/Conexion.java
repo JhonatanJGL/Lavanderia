@@ -2,20 +2,63 @@ package com.example.lavanderia.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class Conexion {
-    public static Connection conectar(){
-        try{
-            String url = "jdbc:mysql://localhost:3306/examen_poo";
-            String user = "root";
-            String password = "12345";
+public final class Conexion {
+    private static final Conexion INSTANCIA = new Conexion();
 
-            Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado correctamente");
-            return con;
+    private final String url;
+    private final String usuario;
+    private final String password;
+    private Connection connection;
 
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }}
+    private Conexion() {
+        this.url = System.getenv().getOrDefault(
+                "DB_URL",
+                "jdbc:mysql://localhost:3307/Poo_lavanderia"
+                        + "?useSSL=false&allowPublicKeyRetrieval=true"
+                        + "&serverTimezone=America/Guayaquil"
+        );
+        this.usuario = System.getenv().getOrDefault("DB_USER", "root");
+        this.password = System.getenv().getOrDefault("DB_PASSWORD", "1234");
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException(
+                    "No se encontró el driver de MySQL. Revise el pom.xml.", e);
+        }
+    }
+
+    public static Conexion getInstancia() {
+        return INSTANCIA;
+    }
+
+    public synchronized Connection getConnection() throws SQLException {
+        if (connection == null || connection.isClosed() || !connection.isValid(2)) {
+            connection = DriverManager.getConnection(url, usuario, password);
+        }
+        return connection;
+    }
+
+    public boolean probarConexion() {
+        try {
+            return getConnection().isValid(2);
+        } catch (SQLException e) {
+            System.err.println("Error de conexión: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public synchronized void cerrarConexion() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.err.println("No se pudo cerrar la conexión: " + e.getMessage());
+            } finally {
+                connection = null;
+            }
+        }
+    }
 }

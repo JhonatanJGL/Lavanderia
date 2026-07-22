@@ -2,90 +2,122 @@ package com.example.lavanderia.dao;
 
 import com.example.lavanderia.db.Conexion;
 import com.example.lavanderia.model.Cliente;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Tabla esperada:
- * CREATE TABLE clientes (
- *   id_cliente INT AUTO_INCREMENT PRIMARY KEY,
- *   nombre VARCHAR(100) NOT NULL
- * );
- */
 public class ClienteDAO implements ICRUD<Cliente> {
 
     @Override
-    public void insertar(Cliente cliente) {
-        String sql = "INSERT INTO clientes (nombre) VALUES (?)";
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, cliente.getNombre());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Error al insertar cliente: " + e.getMessage());
+    public boolean insertar(Cliente cliente) throws SQLException {
+        String sql = """
+                INSERT INTO Clientes(nombre, correo, telefono, direccion, activo)
+                VALUES (?, ?, ?, ?, 1)
+                """;
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            cargarParametros(ps, cliente, false);
+            return ps.executeUpdate() > 0;
         }
     }
 
     @Override
-    public void actualizar(Cliente cliente) {
-        String sql = "UPDATE clientes SET nombre = ? WHERE id_cliente = ?";
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, cliente.getNombre());
-            ps.setInt(2, cliente.getId());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Error al actualizar cliente: " + e.getMessage());
+    public List<Cliente> listar() throws SQLException {
+        String sql = """
+                SELECT idCliente, nombre, correo, telefono, direccion
+                FROM Clientes
+                WHERE activo = 1
+                ORDER BY nombre
+                """;
+        List<Cliente> clientes = new ArrayList<>();
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) clientes.add(mapear(rs));
         }
+        return clientes;
     }
 
     @Override
-    public void eliminar(int id) {
-        String sql = "DELETE FROM clientes WHERE id_cliente = ?";
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Error al eliminar cliente: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public Cliente buscar(int id) {
-        String sql = "SELECT * FROM clientes WHERE id_cliente = ?";
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+    public Cliente buscar(int id) throws SQLException {
+        String sql = """
+                SELECT idCliente, nombre, correo, telefono, direccion
+                FROM Clientes
+                WHERE idCliente = ? AND activo = 1
+                """;
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return new Cliente(rs.getInt("id_cliente"), rs.getString("nombre"));
-                }
+                return rs.next() ? mapear(rs) : null;
             }
-        } catch (SQLException e) {
-            System.out.println("Error al buscar cliente: " + e.getMessage());
         }
-        return null;
     }
 
     @Override
-    public List<Cliente> listarTodos() {
-        List<Cliente> lista = new ArrayList<>();
-        String sql = "SELECT * FROM clientes ORDER BY nombre";
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                lista.add(new Cliente(rs.getInt("id_cliente"), rs.getString("nombre")));
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al listar clientes: " + e.getMessage());
+    public boolean actualizar(Cliente cliente) throws SQLException {
+        String sql = """
+                UPDATE Clientes
+                SET nombre = ?, correo = ?, telefono = ?, direccion = ?
+                WHERE idCliente = ? AND activo = 1
+                """;
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            cargarParametros(ps, cliente, true);
+            return ps.executeUpdate() > 0;
         }
-        return lista;
+    }
+
+    @Override
+    public boolean eliminar(int id) throws SQLException {
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(
+                "UPDATE Clientes SET activo = 0 WHERE idCliente = ?")) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        }
+    }
+
+    public boolean existeCorreo(String correo, int idExcluir) throws SQLException {
+        String sql = """
+                SELECT COUNT(*) FROM Clientes
+                WHERE activo = 1 AND LOWER(correo) = LOWER(?) AND idCliente <> ?
+                """;
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setString(1, correo);
+            ps.setInt(2, idExcluir);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() && rs.getInt(1) > 0;
+            }
+        }
+    }
+
+    public int contarActivos() throws SQLException {
+        Connection cn = Conexion.getInstancia().getConnection();
+        try (PreparedStatement ps = cn.prepareStatement(
+                "SELECT COUNT(*) FROM Clientes WHERE activo = 1");
+             ResultSet rs = ps.executeQuery()) {
+            return rs.next() ? rs.getInt(1) : 0;
+        }
+    }
+
+    private void cargarParametros(PreparedStatement ps, Cliente cliente, boolean incluirId)
+            throws SQLException {
+        ps.setString(1, cliente.getNombre());
+        ps.setString(2, cliente.getCorreo());
+        ps.setString(3, cliente.getTelefono());
+        ps.setString(4, cliente.getDireccion());
+        if (incluirId) ps.setInt(5, cliente.getId());
+    }
+
+    private Cliente mapear(ResultSet rs) throws SQLException {
+        return new Cliente(
+                rs.getInt("idCliente"),
+                rs.getString("nombre"),
+                rs.getString("correo"),
+                rs.getString("telefono"),
+                rs.getString("direccion")
+        );
     }
 }
