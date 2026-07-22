@@ -1,6 +1,6 @@
 package com.example.lavanderia;
 
-import com.example.lavanderia.conexion.Conexion;
+import com.example.lavanderia.db.Conexion;
 
 public class Pruebaconexion {
     public static void main(String[] args) {
