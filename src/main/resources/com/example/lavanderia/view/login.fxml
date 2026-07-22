@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.lavanderia.controller.LoginController"
+           stylesheets="@../css/estilos.css"
+           styleClass="login-root">
+    <children>
+        <BorderPane maxWidth="900.0" maxHeight="540.0"
+                    styleClass="login-shell">
+            <left>
+                <VBox alignment="CENTER" prefWidth="430.0" spacing="18.0"
+                      styleClass="login-brand-panel">
+                    <padding>
+                        <Insets top="50" right="42" bottom="50" left="42"/>
+                    </padding>
+                    <children>
+                        <ImageView fitWidth="112" fitHeight="112" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo.png"/>
+                            </image>
+                        </ImageView>
+                        <Label text="AquaClean" styleClass="brand-title"/>
+                        <Label text="Sistema integral de lavandería"
+                               styleClass="brand-subtitle"/>
+                        <Region prefHeight="20"/>
+                        <Label text="✓ Gestión de clientes"
+                               styleClass="feature-text"/>
+                        <Label text="✓ Control de servicios y stock"
+                               styleClass="feature-text"/>
+                        <Label text="✓ Órdenes, comprobantes y reportes"
+                               styleClass="feature-text"/>
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <VBox alignment="CENTER_LEFT" spacing="14.0"
+                      styleClass="login-form-panel">
+                    <padding>
+                        <Insets top="55" right="55" bottom="55" left="55"/>
+                    </padding>
+                    <children>
+                        <Label text="Iniciar sesión" styleClass="page-title"/>
+                        <Label text="Ingrese sus credenciales para continuar"
+                               styleClass="muted-text"/>
+                        <Region prefHeight="12"/>
+                        <Label text="Usuario" styleClass="field-label"/>
+                        <TextField fx:id="txtUsuario"
+                                   promptText="Ej.: admin"
+                                   styleClass="input-field"/>
+                        <Label text="Contraseña" styleClass="field-label"/>
+                        <PasswordField fx:id="txtPassword"
+                                       promptText="Mínimo 6 caracteres"
+                                       onAction="#ingresar"
+                                       styleClass="input-field"/>
+                        <Label fx:id="lblEstado" text="" wrapText="true"
+                               styleClass="error-label"/>
+                        <Button text="Ingresar al sistema"
+                                onAction="#ingresar"
+                                maxWidth="1.7976931348623157E308"
+                                styleClass="primary-button, login-button"/>
+                        <Region prefHeight="4"/>
+                        <Label text="Demo: admin / cajero / reportes - clave 123456"
+                               styleClass="tiny-strong"/>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

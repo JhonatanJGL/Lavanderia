@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lavanderia.controller.UsuarioController"
+            styleClass="module-root">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <children>
+                <VBox spacing="3">
+                    <children>
+                        <Label text="Gestión de usuarios"
+                               styleClass="page-title"/>
+                        <Label text="Módulo exclusivo para Administrador"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar"
+                           promptText="Buscar usuario..."
+                           prefWidth="270"
+                           styleClass="search-field"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.38" styleClass="clean-split">
+            <items>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+                            styleClass="transparent-scroll">
+                    <content>
+                        <VBox spacing="10" styleClass="form-card">
+                            <padding>
+                                <Insets top="20" right="20"
+                                        bottom="20" left="20"/>
+                            </padding>
+                            <children>
+                                <Label text="Datos de acceso"
+                                       styleClass="section-title"/>
+                                <Label text="Nombre completo"
+                                       styleClass="field-label"/>
+                                <TextField fx:id="txtNombre"/>
+                                <Label text="Correo"
+                                       styleClass="field-label"/>
+                                <TextField fx:id="txtCorreo"/>
+                                <Label text="Teléfono"
+                                       styleClass="field-label"/>
+                                <TextField fx:id="txtTelefono"/>
+                                <Label text="Usuario"
+                                       styleClass="field-label"/>
+                                <TextField fx:id="txtUsuario"/>
+                                <Label text="Contraseña"
+                                       styleClass="field-label"/>
+                                <PasswordField fx:id="txtPassword"
+                                               promptText="Mínimo 6 caracteres"/>
+                                <Label text="Rol"
+                                       styleClass="field-label"/>
+                                <ComboBox fx:id="comboRol"
+                                          maxWidth="1.7976931348623157E308"/>
+                                <HBox spacing="8">
+                                    <children>
+                                        <Button fx:id="btnGuardar"
+                                                text="Guardar usuario"
+                                                onAction="#guardar"
+                                                styleClass="primary-button"
+                                                HBox.hgrow="ALWAYS"
+                                                maxWidth="1.7976931348623157E308"/>
+                                        <Button text="Limpiar"
+                                                onAction="#limpiar"
+                                                styleClass="secondary-button"/>
+                                    </children>
+                                </HBox>
+                                <Button text="Eliminar seleccionado"
+                                        onAction="#eliminar"
+                                        styleClass="danger-button"
+                                        maxWidth="1.7976931348623157E308"/>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <VBox spacing="10" styleClass="table-card">
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+                    <children>
+                        <Label text="Usuarios activos"
+                               styleClass="section-title"/>
+                        <TableView fx:id="tablaUsuarios"
+                                   VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="ID"
+                                             prefWidth="50"/>
+                                <TableColumn fx:id="colNombre" text="Nombre"
+                                             prefWidth="150"/>
+                                <TableColumn fx:id="colCorreo" text="Correo"
+                                             prefWidth="180"/>
+                                <TableColumn fx:id="colUsuario" text="Usuario"
+                                             prefWidth="100"/>
+                                <TableColumn fx:id="colRol" text="Rol"
+                                             prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

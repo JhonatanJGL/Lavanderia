@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane fx:id="rootDashboard"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lavanderia.controller.DashboardController"
+            stylesheets="@../css/estilos.css"
+            styleClass="dashboard-root">
+    <left>
+        <VBox prefWidth="245.0" spacing="7.0" styleClass="sidebar">
+            <padding>
+                <Insets top="24" right="16" bottom="20" left="16"/>
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <children>
+                        <ImageView fitWidth="54" fitHeight="54" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo.png"/>
+                            </image>
+                        </ImageView>
+                        <VBox spacing="0">
+                            <children>
+                                <Label text="AquaClean"
+                                       styleClass="sidebar-title"/>
+                                <Label text="Lavandería"
+                                       styleClass="sidebar-subtitle"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <Region prefHeight="20"/>
+                <Label text="NAVEGACIÓN"
+                       styleClass="sidebar-section-label"/>
+                <Button text="⌂  Inicio" onAction="#irInicio"
+                        styleClass="nav-button"/>
+                <Button fx:id="btnServicios" text="✦  Servicios"
+                        onAction="#irServicios" styleClass="nav-button"/>
+                <Button fx:id="btnClientes" text="♙  Clientes"
+                        onAction="#irClientes" styleClass="nav-button"/>
+                <Button fx:id="btnOrdenes" text="▤  Órdenes"
+                        onAction="#irOrdenes" styleClass="nav-button"/>
+                <Button fx:id="btnUsuarios" text="⚙  Usuarios"
+                        onAction="#irUsuarios" styleClass="nav-button"/>
+                <Button fx:id="btnReportes" text="▥  Reportes"
+                        onAction="#irReportes" styleClass="nav-button"/>
+                <Button fx:id="btnConfiguracion" text="⚒  Configuración"
+                        onAction="#irConfiguracion" styleClass="nav-button"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="↪  Cerrar sesión" onAction="#cerrarSesion"
+                        styleClass="logout-button"/>
+            </children>
+        </VBox>
+    </left>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14" styleClass="topbar">
+            <padding>
+                <Insets top="14" right="24" bottom="14" left="24"/>
+            </padding>
+            <children>
+                <VBox spacing="1">
+                    <children>
+                        <Label text="Panel de control"
+                               styleClass="topbar-title"/>
+                        <Label text="Gestión operativa de AquaClean"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox alignment="CENTER_RIGHT" spacing="1">
+                    <children>
+                        <Label fx:id="lblNombreUsuario" text="Usuario"
+                               styleClass="user-name"/>
+                        <Label fx:id="lblRol" text="ROL"
+                               styleClass="role-badge"/>
+                    </children>
+                </VBox>
+                <Label text="●" styleClass="avatar-dot"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="contenidoPrincipal" styleClass="content-area">
+            <padding>
+                <Insets top="22" right="24" bottom="24" left="24"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

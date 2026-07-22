@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lavanderia.controller.ServicioController"
+            styleClass="module-root">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <children>
+                <VBox spacing="3">
+                    <children>
+                        <Label text="Servicios" styleClass="page-title"/>
+                        <Label text="Administre precios, disponibilidad y descripción"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar"
+                           promptText="Buscar servicio..."
+                           prefWidth="270"
+                           styleClass="search-field"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.35" styleClass="clean-split">
+            <items>
+                <VBox spacing="11" styleClass="form-card">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="Datos del servicio"
+                               styleClass="section-title"/>
+                        <Label text="Nombre" styleClass="field-label"/>
+                        <TextField fx:id="txtNombre"
+                                   promptText="Ej.: Lavado en seco"/>
+                        <Label text="Precio" styleClass="field-label"/>
+                        <TextField fx:id="txtPrecio"
+                                   promptText="Ej.: 7.50"/>
+                        <Label text="Stock / capacidad"
+                               styleClass="field-label"/>
+                        <TextField fx:id="txtStock"
+                                   promptText="Ej.: 50"/>
+                        <Label text="Descripción"
+                               styleClass="field-label"/>
+                        <TextArea fx:id="txtDescripcion"
+                                  promptText="Detalle del servicio"
+                                  prefRowCount="4"
+                                  wrapText="true"/>
+                        <HBox spacing="8">
+                            <children>
+                                <Button fx:id="btnGuardar"
+                                        text="Guardar servicio"
+                                        onAction="#guardar"
+                                        styleClass="primary-button"
+                                        HBox.hgrow="ALWAYS"
+                                        maxWidth="1.7976931348623157E308"/>
+                                <Button text="Limpiar"
+                                        onAction="#limpiar"
+                                        styleClass="secondary-button"/>
+                            </children>
+                        </HBox>
+                        <Button text="Eliminar seleccionado"
+                                onAction="#eliminar"
+                                styleClass="danger-button"
+                                maxWidth="1.7976931348623157E308"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="10" styleClass="table-card">
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+                    <children>
+                        <Label text="Servicios registrados"
+                               styleClass="section-title"/>
+                        <TableView fx:id="tablaServicios"
+                                   VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="ID"
+                                             prefWidth="55"/>
+                                <TableColumn fx:id="colNombre" text="Nombre"
+                                             prefWidth="150"/>
+                                <TableColumn fx:id="colPrecio" text="Precio"
+                                             prefWidth="90"/>
+                                <TableColumn fx:id="colStock" text="Stock"
+                                             prefWidth="75"/>
+                                <TableColumn fx:id="colDescripcion"
+                                             text="Descripción"
+                                             prefWidth="230"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

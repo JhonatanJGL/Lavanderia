@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.lavanderia.controller.ConfiguracionController"
+      spacing="18" styleClass="module-root">
+    <children>
+        <VBox spacing="3">
+            <children>
+                <Label text="Configuración del sistema"
+                       styleClass="page-title"/>
+                <Label text="Parámetros generales disponibles solo para Administrador"
+                       styleClass="muted-text"/>
+            </children>
+        </VBox>
+
+        <HBox spacing="18" alignment="TOP_LEFT">
+            <children>
+                <VBox spacing="11" prefWidth="520"
+                      styleClass="form-card">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+                    <children>
+                        <Label text="Datos de la empresa"
+                               styleClass="section-title"/>
+                        <Label text="Nombre comercial"
+                               styleClass="field-label"/>
+                        <TextField fx:id="txtEmpresa"/>
+                        <Label text="RUC" styleClass="field-label"/>
+                        <TextField fx:id="txtRuc"/>
+                        <Label text="Dirección" styleClass="field-label"/>
+                        <TextField fx:id="txtDireccion"/>
+                        <Label text="Teléfono" styleClass="field-label"/>
+                        <TextField fx:id="txtTelefono"/>
+                        <Button text="Guardar configuración"
+                                onAction="#guardar"
+                                styleClass="primary-button"
+                                maxWidth="1.7976931348623157E308"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="10" prefWidth="360"
+                      styleClass="info-card">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+                    <children>
+                        <Label text="Información"
+                               styleClass="section-title"/>
+                        <Label wrapText="true"
+                               styleClass="body-text"
+                               text="Estos datos identifican a la lavandería y quedan almacenados en la tabla Configuracion. Se pueden utilizar en comprobantes y reportes."/>
+                        <Separator/>
+                        <Label text="Versión 1.0.0"
+                               styleClass="tiny-strong"/>
+                        <Label text="Proyecto final de POO - JavaFX + MySQL"
+                               wrapText="true"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.lavanderia.controller.InicioController"
+      spacing="20" styleClass="module-root">
+    <children>
+        <VBox spacing="4">
+            <children>
+                <Label fx:id="lblBienvenida" text="¡Bienvenido!"
+                       styleClass="page-title"/>
+                <Label text="Resumen general del sistema de lavandería"
+                       styleClass="muted-text"/>
+            </children>
+        </VBox>
+
+        <FlowPane hgap="16" vgap="16" prefWrapLength="900">
+            <children>
+                <VBox prefWidth="210" spacing="8"
+                      styleClass="stat-card, stat-card-blue">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="ÓRDENES" styleClass="stat-label"/>
+                        <Label fx:id="lblTotalOrdenes" text="0"
+                               styleClass="stat-value"/>
+                        <Label text="registradas" styleClass="muted-text"/>
+                    </children>
+                </VBox>
+
+                <VBox prefWidth="210" spacing="8"
+                      styleClass="stat-card, stat-card-green">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="CLIENTES" styleClass="stat-label"/>
+                        <Label fx:id="lblTotalClientes" text="0"
+                               styleClass="stat-value"/>
+                        <Label text="activos" styleClass="muted-text"/>
+                    </children>
+                </VBox>
+
+                <VBox prefWidth="210" spacing="8"
+                      styleClass="stat-card, stat-card-purple">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="SERVICIOS" styleClass="stat-label"/>
+                        <Label fx:id="lblTotalServicios" text="0"
+                               styleClass="stat-value"/>
+                        <Label text="disponibles" styleClass="muted-text"/>
+                    </children>
+                </VBox>
+
+                <VBox prefWidth="210" spacing="8"
+                      styleClass="stat-card, stat-card-orange">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="USUARIOS" styleClass="stat-label"/>
+                        <Label fx:id="lblTotalUsuarios" text="0"
+                               styleClass="stat-value"/>
+                        <Label text="habilitados" styleClass="muted-text"/>
+                    </children>
+                </VBox>
+            </children>
+        </FlowPane>
+
+        <VBox spacing="10" styleClass="info-card">
+            <padding>
+                <Insets top="22" right="22" bottom="22" left="22"/>
+            </padding>
+            <children>
+                <Label text="Flujo recomendado" styleClass="section-title"/>
+                <Label wrapText="true" styleClass="body-text"
+                       text="1. Registre al cliente  →  2. Verifique el servicio y stock  →  3. Cree la orden  →  4. Imprima el comprobante  →  5. Consulte reportes"/>
+            </children>
+        </VBox>
+    </children>
+</VBox>

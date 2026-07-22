@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.lavanderia.controller.ClienteController"
+            styleClass="module-root">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <children>
+                <VBox spacing="3">
+                    <children>
+                        <Label text="Clientes" styleClass="page-title"/>
+                        <Label text="Registro y actualización de clientes"
+                               styleClass="muted-text"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscar"
+                           promptText="Buscar cliente..."
+                           prefWidth="270"
+                           styleClass="search-field"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.35" styleClass="clean-split">
+            <items>
+                <VBox spacing="11" styleClass="form-card">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <children>
+                        <Label text="Datos personales"
+                               styleClass="section-title"/>
+                        <Label text="Nombre completo"
+                               styleClass="field-label"/>
+                        <TextField fx:id="txtNombre"
+                                   promptText="Ej.: María López"/>
+                        <Label text="Correo" styleClass="field-label"/>
+                        <TextField fx:id="txtCorreo"
+                                   promptText="correo@ejemplo.com"/>
+                        <Label text="Teléfono" styleClass="field-label"/>
+                        <TextField fx:id="txtTelefono"
+                                   promptText="0999999999"/>
+                        <Label text="Dirección" styleClass="field-label"/>
+                        <TextField fx:id="txtDireccion"
+                                   promptText="Sector y referencia"/>
+                        <HBox spacing="8">
+                            <children>
+                                <Button fx:id="btnGuardar"
+                                        text="Guardar cliente"
+                                        onAction="#guardar"
+                                        styleClass="primary-button"
+                                        HBox.hgrow="ALWAYS"
+                                        maxWidth="1.7976931348623157E308"/>
+                                <Button text="Limpiar"
+                                        onAction="#limpiar"
+                                        styleClass="secondary-button"/>
+                            </children>
+                        </HBox>
+                        <Button text="Eliminar seleccionado"
+                                onAction="#eliminar"
+                                styleClass="danger-button"
+                                maxWidth="1.7976931348623157E308"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="10" styleClass="table-card">
+                    <padding>
+                        <Insets top="18" right="18" bottom="18" left="18"/>
+                    </padding>
+                    <children>
+                        <Label text="Clientes registrados"
+                               styleClass="section-title"/>
+                        <TableView fx:id="tablaClientes"
+                                   VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colId" text="ID"
+                                             prefWidth="55"/>
+                                <TableColumn fx:id="colNombre" text="Nombre"
+                                             prefWidth="150"/>
+                                <TableColumn fx:id="colCorreo" text="Correo"
+                                             prefWidth="170"/>
+                                <TableColumn fx:id="colTelefono"
+                                             text="Teléfono"
+                                             prefWidth="105"/>
+                                <TableColumn fx:id="colDireccion"
+                                             text="Dirección"
+                                             prefWidth="180"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>
